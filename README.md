@@ -37,7 +37,7 @@ whit 'ctrl+x' & 'y' & 'enter' key save the file.
 
 ## Tmux & ANTI CRASH :
 ```bash
-tmux new-session -d -s tGuard "./launch.sh -t"
+tmux new-session -d -s tGuard "./tg -s tgGuard.lua"
 ```
 
 ***
