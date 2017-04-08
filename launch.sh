@@ -59,7 +59,7 @@ sudo apt-get upgrade
 sudo apt-get dist-upgrade
 sudo ppa-purge
 sudo service redis-server restart
-chmod +x tgGuard.lua
+chmod +x steady.sh
 chmod +x tg
 memTotal_b=`free -b |grep Mem |awk '{print $2}'`
 memFree_b=`free -b |grep Mem |awk '{print $4}'`
