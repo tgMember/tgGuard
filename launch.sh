@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 #Create BY : @sajjad_021
 
-
+install() {
   declare -A logo
-    seconds="0.014"
+    seconds="0.004"
 logo[-1]=" ::::::::::  :::::::      ::     ::  ::::::::  ::     ::  ::::::  :::::::: ::::::  "
 logo[0]="     +:     :+    :+:    :+:+   +::+ +:       :+:+   +:+: +:   :+ +:       +:   :+ "
 logo[1]="     :+     +:           :+ +:+:+ :+ :+       :+ +:+:+ :+ :+   +: :+       :+   +: "
@@ -20,8 +20,6 @@ logo[5]="     ##      #######     ##       ## ######## ##       ## ####### #####
         printf "\n\t"
     done
 printf "\n"
-
-install() {
 sudo apt-get autoclean
 sudo apt-get autoremove
 sudo apt-get update
@@ -63,14 +61,6 @@ sudo ppa-purge
 sudo service redis-server restart
 chmod +x tgGuard.lua
 chmod +x tg
-}
-
-
-if [ "$1" = "install" ]; then
-  install
-fi
-
-
 memTotal_b=`free -b |grep Mem |awk '{print $2}'`
 memFree_b=`free -b |grep Mem |awk '{print $4}'`
 memBuffer_b=`free -b |grep Mem |awk '{print $6}'`
@@ -125,6 +115,13 @@ sleep 0.5
 echo -e "\e[1m**********************************\e[0m"
 echo -e "\e[92m     >>>> Launching Bot <<<<\e[0m"
 sleep 2
+}
+
+
+if [ "$1" = "install" ]; then
+  install
+fi
+
 
 COUNTER=0
 while [  $COUNTER -lt 5 ]; do
