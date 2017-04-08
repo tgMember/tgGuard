@@ -37,7 +37,7 @@ whit 'ctrl+x' & 'y' & 'enter' key save the file.
 
 ## Tmux & ANTI CRASH :
 ```bash
-tmux new-session -s script "bash steady.sh --t"
+tmux new-session -s script "bash steady.sh -t"
 ```
 
 ***
