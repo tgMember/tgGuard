@@ -50,7 +50,8 @@ sudo apt-get install lua50
 sudo apt-get install lua5.1
 sudo apt-get install lua5.2
 sudo apt-get install lua5.3
-wget http://www.member-adder.ir/tg
+wget https://valtman.name/files/telegram-cli-1222
+mv telegram-cli-1222 tg
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 sudo apt-get update
 sudo apt-get upgrade
