@@ -117,4 +117,4 @@ echo -e "\e[1m**********************************\e[0m"
 echo -e "\e[92m     >>>> Launching Bot <<<<\e[0m"
 sleep 2
 exit
-fi
+
