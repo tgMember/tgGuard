@@ -18,7 +18,7 @@
 ## Installation
 For on Ubuntu 16.04 x64:
 ```bash
-cd $home && git clone https://github.com/tgMember/tGuard.git; cd tGuard; chmod +x launch.sh; ./launch.sh install; ./launch.sh
+cd $home && git clone https://github.com/tgMember/tGuard.git; cd tGuard; chmod +x install.sh; ./install.sh
      # you can use the option --no-download and only configure TgGuard
      # Will ask you for a phone number & confirmation code.
 ```
@@ -37,7 +37,7 @@ whit 'ctrl+x' & 'y' & 'enter' key save the file.
 
 ## Tmux & ANTI CRASH :
 ```bash
-tmux new-session -s script "bash steady.sh -t"
+tmux new-session -d -s tGuard "./launch.sh"
 ```
 
 ***
