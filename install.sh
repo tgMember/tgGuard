@@ -61,6 +61,7 @@ sudo ppa-purge
 sudo service redis-server restart
 chmod +x steady.sh
 chmod +x tg
+chmod 777 launch.sh
 memTotal_b=`free -b |grep Mem |awk '{print $2}'`
 memFree_b=`free -b |grep Mem |awk '{print $4}'`
 memBuffer_b=`free -b |grep Mem |awk '{print $6}'`
@@ -115,17 +116,3 @@ sleep 0.5
 echo -e "\e[1m**********************************\e[0m"
 echo -e "\e[92m     >>>> Launching Bot <<<<\e[0m"
 sleep 2
-}
-
-
-if [ "$1" = "install" ]; then
-  install
-fi
-
-
-COUNTER=0
-while [  $COUNTER -lt 5 ]; do
-./tg -s tgGuard.lua
-sleep 1
-#let COUNTER=COUNTER+1 
-done
