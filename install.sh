@@ -59,7 +59,6 @@ sudo apt-get upgrade
 sudo apt-get dist-upgrade
 sudo ppa-purge
 sudo service redis-server restart
-chmod +x steady.sh
 chmod +x tg
 chmod 777 launch.sh
 
