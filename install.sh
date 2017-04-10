@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 #Create BY : @sajjad_021
-
-install() {
   declare -A logo
     seconds="0.004"
 logo[-1]=" ::::::::::  :::::::      ::     ::  ::::::::  ::     ::  ::::::  :::::::: ::::::  "
