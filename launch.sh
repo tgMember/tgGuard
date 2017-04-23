@@ -137,6 +137,6 @@ else
 fi
 sudo service redis-server start
 while true; do
-  ./telegram-cli -s tgGuard
+  ./telegram-cli -s tgGuard.lua
 done
 fi
