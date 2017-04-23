@@ -2,6 +2,12 @@
 -- Created On Apr 2017
 -- Developer @sajjad_021
 -- tgChannel @tgMember
+serpent=require("serpent")
+https=require"ssl.https"
+JSON = require("dkjson")
+URL = require("socket.url")
+ltn12 = require("ltn12")
+http = require("socket.http")
 serpent = require("serpent")
 lgi = require ('lgi')
 redis = require('redis')
