@@ -1,4 +1,4 @@
- #!/bin/bash
+ #!/usr/bin/env bash
 #Create BY : @sajjad_021
 
 THIS_DIR=$(cd $(dirname $0); pwd)
@@ -136,7 +136,5 @@ else
   fi
 fi
 sudo service redis-server start
-while true; do
   ./telegram-cli -s tgGuard.lua
-done
 fi
