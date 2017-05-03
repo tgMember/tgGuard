@@ -9,7 +9,6 @@ cd $THIS_DIR
 install_luarocks() {
   git clone https://github.com/keplerproject/luarocks.git
   cd luarocks
-   sudo apt-get install luarocks
  ./configure; sudo make bootstrap
    make build && make install
  sudo luarocks install luasocket
@@ -21,47 +20,7 @@ install_luarocks() {
  sudo luarocks install lanes
  sudo luarocks install Lua-cUR  
   sudo service redis-server start
-  git checkout tags/v2.2.2 # Current stable
-
-  PREFIX="$THIS_DIR/.luarocks"
-
-  ./configure --prefix=$PREFIX --sysconfdir=$PREFIX/luarocks --force-config
-   sudo apt-get install luarocks
- ./configure; sudo make bootstrap
-   make build && make install 
-   sudo service redis-server start
   cd ..
-  rm -rf luarocks
-}
- 
-install_rocks() {
-  ./.luarocks/bin/luarocks install luasocket
- 
-  ./.luarocks/bin/luarocks install xml
-  
-  ./.luarocks/bin/luarocks install feedparser
-  
- ./.luarocks/bin/luarocks install lua-term
-
- ./.luarocks/bin/luarocks install dkjson
- 
- ./.luarocks/bin/luarocks install lanes
- 
- ./.luarocks/bin/luarocks install luasec
-  
-  ./.luarocks/bin/luarocks install oauth
- 
-  ./.luarocks/bin/luarocks install redis-lua
- 
-  ./.luarocks/bin/luarocks install lua-cjson
- 
-  ./.luarocks/bin/luarocks install fakeredis
- 
-  ./.luarocks/bin/luarocks install Lua-cURL
-
-  ./.luarocks/bin/luarocks install serpent
-	
-sudo ./.luarocks/bin/service redis-server start
 }
 
 install2() {
@@ -85,38 +44,31 @@ logo[5]="     ##      #######     ##       ## ######## ##       ## ####### #####
 printf "\n"
     sudo apt-get install software-properties-common
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test 
-		sudo apt-get update
-	  sudo apt-get upgrade
-    sudo apt-get dist-upgrade
+		sudo apt-get update -y
+	  sudo apt-get upgrade -y
+    sudo apt-get dist-upgrade -y
 		sudo apt-get install g++-4.7 -y c++-4.7 -y
 		sudo apt-get install libreadline-dev -y libconfig-dev -y libssl-dev -y lua5.2 -y liblua5.2-dev -y lua-socket -y lua-sec -y lua-expat -y libevent-dev -y make unzip git redis-server autoconf g++ -y libjansson-dev -y libpython-dev -y expat libexpat1-dev -y
 		sudo apt-get install screen -y
 		sudo apt-get install tmux -y
 		sudo apt-get install libstdc++6 -y
 		sudo apt-get install lua-lgi -y
-		sudo apt-get install libnotify-dev -y	
-               	sudo apt-get update
-	        sudo apt-get upgrade
+		sudo apt-get install libnotify-dev -y
 		install_luarocks
-		sudo apt-get update
-	  sudo apt-get upgrade
-		install_rocks
 }
 
 install() {
-      sudo apt-get update
-	    sudo apt-get upgrade
+      sudo apt-get update -y
+	    sudo apt-get upgrade -y
 			install2
-			sudo apt-get update
-	                sudo apt-get upgrade
 			sudo service redis-server start
 			wget http://valtman.name/files/telegram-cli-1222
                        mv telegram-cli-1222 telegram-cli
 		    chmod 777 telegram-cli
                    chmod 777 anticrash.sh
 		  sudo apt-get install python-setuptools python-dev build-essential
-                sudo easy_install pip
-                sudo pip install redis
+                sudo easy_install pip -y
+                sudo pip install redis -y
 	  echo "Was successfully installed"
 }
 
@@ -135,6 +87,5 @@ else
         exit 1
   fi
 fi
-sudo service redis-server start
   ./telegram-cli -s tgGuard.lua
 fi
