@@ -87,5 +87,4 @@ else
         exit 1
   fi
 fi
-  ./telegram-cli -s tgGuard.lua
-fi
+  screen ./run.sh
