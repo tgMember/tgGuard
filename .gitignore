@@ -1,0 +1,14 @@
+# Compiled Lua sources
+tgGuard.lua
+
+# luarocks build files
+*.src.rock
+*.tar.gz
+
+# Object files
+*.o
+*.os
+
+# Libraries
+*.lib
+.luarocks
