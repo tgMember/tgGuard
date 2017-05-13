@@ -14,17 +14,19 @@
 
 ***
 
+
 <p align="center"> <img class="td" style="vertical-align: middle;" src="https://tgmemberplus.000webhostapp.com/tgguard.jpg" alt="" width="320" height="320" /></p>
 
 
 
 [![http://t.me/sajjad_021](https://img.shields.io/badge/Telegram-sajjad__021-blue.svg)](http://t.me/sajjad_021)
+
 [![https://github.com/tgMember/tGuard](https://img.shields.io/badge/%F0%9F%92%AC_GitHub-tGuard-green.svg)](https://github.com/tgMember/tGuard)
+
 [![http://tgmember.cf](https://img.shields.io/badge/webpage-tgMember-ff69b4.svg)](http://tgmember.cf)
 
 [![https://t.me/tgMember](https://img.shields.io/badge/%F0%9F%92%AC_Telegram-tgMember-blue.svg)](https://t.me/tgMember)
 
-<h1 align="center">tgGuard v5</h1>
 
 
 ***
@@ -63,9 +65,9 @@ after submit install by " y " key press and enter robot run and ask you for a ph
 
 ## Help and commands 
 
-for see help and command, send help method in your bot.
+- for see help and command, send help method in your bot.
 
-- ***
+***
 
 # [Creator](https://telegram.me/sajjad_021)
 # [Channel](https://telegram.me/tgMember)
