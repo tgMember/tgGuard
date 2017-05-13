@@ -1,0 +1,23 @@
+🔃Bot Flood & Spam :
+
+➡️ Set Spam Char :
+Set A Number For Spam Check And Then More Than That Number Of Word Char Has Been Delete
+➡️ Command : Setspam [More Than 40]
+➡️ Example : Setspam 60
+➖➖➖➖➖➖
+➡️ Flood Status :
+Set Flood Status To Kick Or Del User Or Just Msg
+1 - Command : Setstatus del
+|To Del Msg|
+2 - Command : Setstatus kick
+|To Kick User|
+➖➖➖➖➖➖
+➡️ Flood Check Time :
+Set A Time That Bot Check Flooding
+➡️ Command : Setflood [1 Or More]
+➡️ Example : Setflood 5
+    ➖➖➖➖➖➖➖
+       ➖➖➖
+         ➖
+`develop by @sajjad_021`
+tgChannel : @tgMember

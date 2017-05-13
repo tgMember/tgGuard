@@ -1,0 +1,21 @@
+Bot Conditions :
+➡️ Strict :
+The Condition That The Wrongdoer User Has Been Remove From GP.
+Enable : Lock strict
+Disable : Unlock strict
+➖➖➖➖➖➖
+➡️ Group Lock All :
+The Condition That Any Body Cant Chat And This is Like Mute all
+Enable : Lock all
+Disable : Unlock all
+➖➖➖➖➖➖
+➡️ No Answer To Users :
+The Bot Does Not Answer To User Commands
+Enable : Lock cmd
+Disable : Unlock cmd
+➖➖➖➖➖➖
+➡️ Group Lock Time :
+Set Timer For Unlock Group Chat and ...
+Command : Lock gtime [Time]
+Example : Lock gtime 2
+For 2Hours
