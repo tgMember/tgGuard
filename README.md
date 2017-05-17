@@ -47,7 +47,9 @@ nano config.lua
 press key's  :
 
 1- ctre + x
+
 2- y
+
 3- enter
 
 ***
