@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 THIS_DIR=$(cd $(dirname $0); pwd)
 cd $THIS_DIR
 
@@ -69,6 +68,7 @@ echo -e "\e[38;5;099minstall telegram-cli\e"
     wget https://valtman.name/files/telegram-cli-1222
     mv telegram-cli-1222 telegram-cli
     chmod +x telegram-cli
+    chmod +x run.sh
 }
   
 install2() {
@@ -167,11 +167,4 @@ if [ ! -f ./telegram-cli ]; then
         exit 1
   fi
 fi
-		
-    screen kill-session -t tgGuard
-    tmux kill-session -t tgGuard
-while true ; do
-    screen ./run.sh
-done
-	sleep 8000
-done
+	screen ./run.sh
