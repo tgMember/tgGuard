@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 
 THIS_DIR=$(cd $(dirname $0); pwd)
@@ -59,7 +59,7 @@ install_rocks() {
 echo -e "\e[38;5;105mInstall rocks service\e"
 rocks="luasocket luasec redis-lua lua-term serpent dkjson Lua-cURL multipart-post lanes"
     for rock in $rocks; do
-      ./.luarocks/bin/luarocks install $rock
+      sudo luarocks install $rock
     done
 }
   
@@ -73,12 +73,12 @@ echo -e "\e[38;5;099minstall telegram-cli\e"
   
 install2() {
 echo -e "\e[38;5;034mInstalling more dependencies\e"
-		sudo apt-get install screen -y
-		sudo apt-get install tmux -y
+    sudo apt-get install screen -y
+    sudo apt-get install tmux -y
     sudo apt-get install upstart -y
-		sudo apt-get install libstdc++6 -y
-		sudo apt-get install lua-lgi -y
-		sudo apt-get install libnotify-dev -y
+    sudo apt-get install libstdc++6 -y
+    sudo apt-get install lua-lgi -y
+    sudo apt-get install libnotify-dev -y
     install_luarocks
     install_rocks
     py
@@ -91,12 +91,12 @@ echo -e "\e[38;5;034mInstalling more dependencies\e"
 install() {
 echo -e "\e[38;5;035mUpdating packages\e"
   	sudo apt-get update -y
-		sudo apt-get upgrade -y
+	sudo apt-get upgrade -y
 
 echo -e "\\e[38;5;129mInstalling dependencies\e"
-	  sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-		sudo apt-get install g++-4.7 -y c++-4.7 -y
-		sudo apt-get install libreadline-dev -y libconfig-dev -y libssl-dev -y lua5.2 -y liblua5.2-dev -y lua-socket -y lua-sec -y lua-expat -y libevent-dev -y make unzip git redis-server autoconf g++ -y libjansson-dev -y libpython-dev -y expat libexpat1-dev -y
+	sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+	sudo apt-get install g++-4.7 -y c++-4.7 -y
+	sudo apt-get install libreadline-dev -y libconfig-dev -y libssl-dev -y lua5.2 -y liblua5.2-dev -y lua-socket -y lua-sec -y lua-expat -y libevent-dev -y make unzip git redis-server autoconf g++ -y libjansson-dev -y libpython-dev -y expat libexpat1-dev -y
 install2
 clear
 }
@@ -168,9 +168,10 @@ if [ ! -f ./telegram-cli ]; then
   fi
 fi
 		
+    screen kill-session -t tgGuard
     tmux kill-session -t tgGuard
 while true ; do
-    tmux new-session -s tgGuard "./telegram-cli -s tgGuard.lua"
-	done
-	sleep 18000
+    screen ./run.sh
+done
+	sleep 8000
 done
