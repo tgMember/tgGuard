@@ -56,9 +56,9 @@ cd ..
 
 install_rocks() {
 echo -e "\e[38;5;105mInstall rocks service\e"
-rocks="luasocket luasec redis-lua lua-term serpent dkjson Lua-cURL multipart-post lanes"
+rocks="luasocket luasec redis-lua lua-term serpent dkjson Lua-cURL multipart-post lanes xml fakeredis luaexpat luasec lbase64 luafilesystem lub redis-lua lua-cjson feedparser serpent"
     for rock in $rocks; do
-      sudo luarocks install $rock
+      ./.luarocks/bin/luarocks install $rock
     done
 }
   
@@ -167,4 +167,5 @@ if [ ! -f ./telegram-cli ]; then
         exit 1
   fi
 fi
-	screen ./run.sh
+
+screen ./run.sh
