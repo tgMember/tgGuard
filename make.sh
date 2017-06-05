@@ -77,6 +77,12 @@ echo -e "\e[38;5;034mInstalling more dependencies\e"
     sudo apt-get install libnotify-dev -y
 }
 
+py() {
+ sudo apt-get install python-setuptools python-dev build-essential 
+ sudo easy_install pip
+ sudo pip install redis
+}
+
 install() {
 echo -e "\e[38;5;035mUpdating packages\e"
    sudo apt-get update -y
@@ -95,107 +101,28 @@ log
 echo -e "\e[38;5;046mInstalling packages successfully\033[0;00m"
 }
 
-py() {
- sudo apt-get install python-setuptools python-dev build-essential 
- sudo easy_install pip
- sudo pip install redis
-}
+if [ "$1" = "install" ]; then
+install
+fi
 
-inf() {
-memTotal_b=`free -b |grep Mem |awk '{print $2}'`
-memFree_b=`free -b |grep Mem |awk '{print $4}'`
-memBuffer_b=`free -b |grep Mem |awk '{print $6}'`
-memCache_b=`free -b |grep Mem |awk '{print $7}'`
-
-memTotal_m=`free -m |grep Mem |awk '{print $2}'`
-memFree_m=`free -m |grep Mem |awk '{print $4}'`
-memBuffer_m=`free -m |grep Mem |awk '{print $6}'`
-memCache_m=`free -m |grep Mem |awk '{print $7}'`
-CPUPer=`top -b -n1 | grep "Cpu(s)" | awk '{print $2 + $4}'`
-uptime=`uptime`
-ProcessCnt=`ps -A | wc -l`
-memUsed_b=$(($memTotal_b-$memFree_b-$memBuffer_b-$memCache_b))
-memUsed_m=$(($memTotal_m-$memFree_m-$memBuffer_m-$memCache_m))
-memUsedPrc=$((($memUsed_b*100)/$memTotal_b))
-echo -e "➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\033[38;5;208mServer Information\033[0;00m➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖"
-echo ">Total Ram : $memTotal_m MB  Ram in use : $memUsed_m MB - $memUsedPrc% used!"
-echo '>Cpu in use : '"$CPUPer"'%'
-echo '>Server Uptime : '"$uptime"
-}
-
-anticrash() {
-while true ; do
-    tmux kill-session -t $THIS_DIR
-    tmux new-session -s $THIS_DIR "./telegram-cli -s tgGuard.lua"
-    tmux detach -s $THIS_DIR
+if [ "$1" = "api" ]; then
+while true; do
+screen -S nohup lua api.lua
 done
-}
-
-menu() {
-echo -e "➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\033[38;5;208mMENU\033[0;00m➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖"
-echo -e "1 => \033[38;5;208mInstall\033[0;00m"
-echo -e "2 => \033[38;5;208mlaunch robot\033[0;00m"
-echo -e "3 => \033[38;5;208manticrash\033[0;00m"
-echo -e "4 => \033[38;5;208mTrun Off Robot\033[0;00m"
-echo -e "5 => \033[38;5;208mReturn last session\033[0;00m"
-echo -e "6 => \033[38;5;208mServer info\033[0;00m"
-echo -e "7 => \033[38;5;208mUninstall bot\033[0;00m"
-echo -e "0 => \033[38;5;208mExit\033[0;00m"
-echo -e "\033[38;5;208m  ➖  ➖  ➖➖➖➖➖➖  ➖  ➖  ➖  \033[0;00m"
-echo '>Channel : '"@tgMember"
-echo '>Develop by '"@sajjad_021"
-# Options in ./config.sh <option>
-read VAR
-if [ "$VAR" = 1 ]; then
-  clear
-  logo
-  install
-  menu
-elif [ "$VAR" = 2 ]; then
-	tmux new-session -s $THIS_DIR "./telegram-cli -s tgGuard.lua"
-elif [ "$VAR" = 3 ]; then
- 	log
-	anticrash
-	menu
-elif [ "$VAR" = 4 ]; then
-	killall telegram-cli
-	tmux kill-session -t $THIS_DIR
-	log
-	echo -e '\e[34mSessions closed\e[0m'
-	menu
-elif [ "$VAR" = 5 ]; then
-	tmux attach-session -t $THIS_DIR
-elif [ "$VAR" = 6 ]; then
-  log
-	inf
-	menu
-elif [ "$VAR" = 7 ]; then
-  cd $home && rm -rf .telegram-cli && rm -rf tgGuard
-  menu
-elif [ "$VAR" = 0 ]; then
-	clear
-	log
-	exit
-elif [ "$VAR" = "" ]; then
-	clear
-	echo -e '\e[31mOpcion invalida\e[0m'
-	else
-	clear
-	echo -e '\e[31mOpcion invalida\e[0m'
-fi
-}
-
-if [ ! "$1" ]; then
-  menu
 fi
 
-if [ "$1" = "info" ]; then
-  clear
-	log
-	inf
+if [ "$1" = "bot" ]; then
+while true; do
+screen -S nohup ./telegram-cli -s tgGuard.lua
+done
 fi
 
-if [ "$1" = "tmux" ]; then
-	log
-  anticrash
+if [ ! -f telegram-cli ]; then
+    echo -e "\033[38;5;208mError! telegram-cli not found, Please reply to this message:\033[1;208m"
+    read -p "Do you want to install and config? [y/n] = "
+	if [ "$REPLY" == "y" ] || [ "$REPLY" == "Y" ]; then
+        install
+    elif [ "$REPLY" == "n" ] || [ "$REPLY" == "N" ]; then
+        exit 1
+  fi
 fi
