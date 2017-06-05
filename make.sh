@@ -121,6 +121,7 @@ if [ ! -f telegram-cli ]; then
     echo -e "\033[38;5;208mError! telegram-cli not found, Please reply to this message:\033[1;208m"
     read -p "Do you want to install and config? [y/n] = "
 	if [ "$REPLY" == "y" ] || [ "$REPLY" == "Y" ]; then
+	chmod 777 make.sh
         install
     elif [ "$REPLY" == "n" ] || [ "$REPLY" == "N" ]; then
         exit 1
