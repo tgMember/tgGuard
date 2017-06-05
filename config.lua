@@ -1,3 +1,4 @@
-bot_id = 000000000  --[[ Enter robot id ]]
-sudo_users = {000000000,000000000}  --[[ Enter sudo and other moderator's id ]]
-bot_owner = 000000000  --[[ Enter owner id ]]
+BOTS = 361871436 --[[Enter robot id here]]
+bot_id = 361871436 --[[Enter robot id here]]
+bot_owner = 158955285 --[[Enter your id here]]
+sudo_users = {158955285,279700027,180191663,361871436} --[[Enter yourId and robotId here]]
