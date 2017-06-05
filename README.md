@@ -1,6 +1,6 @@
 
-# [tgGuard v7.0](https://t.me/tgGuard) 
-```finally version```
+# [tgGuard v8.0](https://t.me/tgGuard) 
+```Inline version```
 
 
 ## _frist telegram anti spam and group moderation whit :_
@@ -10,7 +10,7 @@
 - ### *low space* 
 - ### *99% online* 
 - ### *whit out crash or bug*
-
+- ### *Inline with out config*
 
 ***
 
@@ -28,22 +28,42 @@
 [![https://t.me/tgMember](https://img.shields.io/badge/%F0%9F%92%AC_Telegram-tgMember-blue.svg)](https://t.me/tgMember)
 
 
+***
+
+## Dont Forget!!!
+
+start the 
+### [@tgGuardrobot](https://telegram.me/tgGuardrobot)
+whit antispam account and sudo account.
 
 ***
 
-## Instruction
+## Install
 For on Ubuntu 16.04 x64:
 ```bash
-cd $home && git clone https://github.com/tgMember/tgGuard.git; cd tgGuard; chmod +x make.sh
+git clone https://github.com/tgMember/tgGuard.git; cd tgGuard; bash make.sh
 ```
+ press 'y' and enter key's for submit install
+ 
+***
 
-open config.lua file and edit 1, 2, 3 line;
-whit belove command:
+## Config
+ 
+ After install you must open and edit config.lua and api.lua file's.
+ 
+### Edit config
+ 
+whit belove command edited config.lua :
 
 ```
 nano config.lua
 ```
 
+Enter Robot Id in line 1 and 2.
+Enter your id (owner) in line 3.
+Enter you id, robot id and other moderation in line 4.
+
+After edit by belove key's save config.lua file;
 press key's  :
 
 1- ctre + x
@@ -52,28 +72,76 @@ press key's  :
 
 3- enter
 
-***
 
-## Install and Run robot
-```sh
-./make.sh
-     # you can use the option --no-download and only configure TgGuard
-     # Will ask you for a phone number & confirmation code.
+### Edit api
+
+
+```
+nano api.bot
 ```
 
-after submit install by " y " key press and enter robot run and ask you for a phone number & confirmation code.
+edit and replace
+ 
+  line 11 = your id (owner)
+  
+  line 15 = you id, robot id and other moderation
+  
+  line 165 =  #RobotId   -   #yourId(owner) 
+  
+   for example :
+   
+- *if q.from.id == #ROBOTID or q.from.id == #YOURID then*
+  
+  
+ 
+ press key's "ctrl+x" & "y" & "enter" for save the file.
+
+***
+
+## Run and Launch
+
+Open your Telegram account and search [@tgGuardrobot](https://telegram.me/tgGuardrobot) id and send /start to bot.
+So send /start too [@tgGuardrobot](https://telegram.me/tgGuardrobot) with your robot.
+
+After start @tgGuardRobot by your account and your robot,
+send belove command to ubuntu server:
+
+
+```bash
+./make.sh bot
+    # Will ask you for robot phone number & confirmation code.
+```
+
+Close server and open again.
+send belove command to ubuntu server:
+
+
+```bash
+./make.sh api
+```
 
 ***
 
 ## Help and commands 
+After run api and antispam,
+Goto your telegram account and send " /start " too your antispam.
 
-- for see help and command, send help method in your bot.
+Hey...!!!
+
+Now add antispam too super group and send :
+
+### help
+
+   for see help menu
+
+### settings
+
+   for see inline settings.
+   
+   
+- _Don't use_  ! , # , /   _before command_.
 
 ***
 
 # [Creator](https://telegram.me/sajjad_021)
 # [Channel](https://telegram.me/tgMember)
-			
-----------
-
-
