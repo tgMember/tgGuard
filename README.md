@@ -77,7 +77,7 @@ press key's  :
 
 
 ```
-nano api.bot
+nano api.lua
 ```
 
 edit and replace
