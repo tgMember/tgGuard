@@ -162,7 +162,7 @@ local function run()
           offset = msg.update_id + 1
           if msg.inline_query then
             local q = msg.inline_query
-		if q.from.id == 361871436 or q.from.id == 158955285 then
+		if q.from.id == 180191663 or q.from.id == 158955285 then
 		--[[Enter         bot id       and         your id   ]]
             if q.query:match('%d+') then
               local chat = '-'..q.query:match('%d+')
@@ -179,12 +179,12 @@ local hash = SUDO..'settings:'..chat..':'..value
 								{
                  {text = 'تنظیمات گروه', callback_data = 'groupsettings:'..chat} --,{text = 'واحد فروش', callback_data = 'aboute:'..chat}
                 },{
-				 {text = 'پشتیبانی', callback_data = 'supportbot:'..chat},{text = 'تبلیغات شما', callback_data = 'youradds:'..chat}
+				 {text = 'پشتیبانی ربات تلگرام گارد', callback_data = 'supportbot:'..chat},{text = 'تبلیغات شما', callback_data = 'youradds:'..chat}
 				  },{
-				 {text = 'اطلاعات گروه', callback_data = 'groupinfo:'..chat},{text = 'راهنما', callback_data = 'helpbot:'..chat}
+				 {text = 'اطلاعات گروه', callback_data = 'groupinfo:'..chat},{text = 'tgGuard راهنمای', callback_data = 'helpbot:'..chat}
 				}
 							}
-            answer(q.id,'settings','Group settings',chat,'به بخش اصلی خوش آمدید.\nاز منوی زیر انتخاب کنید:',keyboard)
+            answer(q.id,'settings','Group settings',chat,'به بخش اصلی تلگرام گارد خوش آمدید.\nاز منوی زیر انتخاب کنید:',keyboard)
             end
             end
 						end
@@ -230,8 +230,8 @@ local hash = SUDO..'settings:'..chat..':'..value
 								result = 'عملکرد قفل ارسال هرزنامه : '..spam_status
 								q.data = 'next_page:'..chat
 								elseif lock == 'MSGMAXup' then
-								if tonumber(MSG_MAX) == 20 then
-									Canswer(q.id,'حداکثر عدد انتخابی برای این قابلیت [20] میباشد!',true)
+								if tonumber(MSG_MAX) == 40 then
+									Canswer(q.id,'حداکثر عدد انتخابی برای این قابلیت [40] میباشد!',true)
 									else
 								MSG_MAX = tonumber(MSG_MAX) + 1
 								redis:set(SUDO..'floodmax'..chat,MSG_MAX)
@@ -248,8 +248,8 @@ local hash = SUDO..'settings:'..chat..':'..value
 								result = MSG_MAX
 							end
 								elseif lock == 'TIMEMAXup' then
-								if tonumber(TIME_MAX) == 10 then
-								Canswer(q.id,'حداکثر عدد انتخابی برای این قابلیت [10] میباشد!',true)
+								if tonumber(TIME_MAX) == 5 then
+								Canswer(q.id,'حداکثر عدد انتخابی برای این قابلیت [5] میباشد!',true)
 									else
 								TIME_MAX = tonumber(TIME_MAX) + 1
 								redis:set(SUDO..'floodtime'..chat,TIME_MAX)
@@ -297,12 +297,12 @@ local hash = SUDO..'settings:'..chat..':'..value
 								{
                  {text = 'تنظیمات گروه', callback_data = 'groupsettings:'..chat} --,{text = 'واحد فروش', callback_data = 'aboute:'..chat}
                 },{
-				 {text = 'پشتیبانی', callback_data = 'supportbot:'..chat},{text = 'تبلیغات شما', callback_data = 'youradds:'..chat}
+				 {text = 'پشتیبانی تی جی گارد', callback_data = 'supportbot:'..chat},{text = 'تبلیغات شما', callback_data = 'youradds:'..chat}
 				  },{
-				 {text = 'اطلاعات گروه', callback_data = 'groupinfo:'..chat},{text = 'راهنما', callback_data = 'helpbot:'..chat}
+				 {text = 'اطلاعات گروه', callback_data = 'groupinfo:'..chat},{text = 'راهنمای ربات تلگرام گارد', callback_data = 'helpbot:'..chat}
 				}
 							}
-            edit(q.inline_message_id,'`به بخش اصلی خوش آمدید.`\n`از منوی زیر انتخاب کنید:`',keyboard)
+            edit(q.inline_message_id,'`به بخش اصلی tgGuard خوش آمدید.`\n`از منوی زیر انتخاب کنید:`',keyboard)
             end
 							------------------------------------------------------------------------
 							if q.data:match('supportbot') then
@@ -413,7 +413,7 @@ local hash = SUDO..'settings:'..chat..':'..value
                    {text = 'بازگشت به منوی اصلی ◀️', callback_data = 'firstmenu:'..chat}
 				}
 							}
-              edit(q.inline_message_id,'با عرض پوزش، متاسفانه این سیستم تا اطلاع ثانوی غیرفعال میباشد.',keyboard)
+              edit(q.inline_message_id,'جهت ثبت و درخواست تبلیغات به سازنده ربات به آیدی @sajjad_021 مراجعه کنید.',keyboard)
             end
 							------------------------------------------------------------------------
 							--[[if q.data:match('groupinfo') then
@@ -434,12 +434,12 @@ local hash = SUDO..'settings:'..chat..':'..value
 								{
                   {text = 'راهنمای متنی', callback_data = 'helptext:'..chat}
                 },{
-				 {text = 'راهنمای صوتی', callback_data = 'voicehelp:'..chat},{text = 'راهنمای تصویری', callback_data = 'videohelp:'..chat}
+				 {text = 'امکانات دیگر تلگرام گارد', callback_data = 'voicehelp:'..chat},{text = 'راهنمای تصویری', callback_data = 'videohelp:'..chat}
                 },{
                    {text = 'بازگشت به منوی اصلی ◀️', callback_data = 'firstmenu:'..chat}
 				}
 							}
-              edit(q.inline_message_id,'`به بخش راهنما خوش آمدید.`\n`از منوی زیر انتخاب کنید:`',keyboard)
+              edit(q.inline_message_id,'`به بخش راهنمای ربات تلگرام گارد خوش آمدید.`\n`از منوی زیر انتخاب کنید:`',keyboard)
             end
 							------------------------------------------------------------------------
 							if q.data:match('helptext') then
@@ -461,7 +461,7 @@ local hash = SUDO..'settings:'..chat..':'..value
                    {text = 'بازگشت به منوی اصلی ◀️', callback_data = 'firstmenu:'..chat},{text = 'صفحه قبلی ◀️', callback_data = 'helpbot:'..chat}
 				}
 							}
-              edit(q.inline_message_id,'`با عرض پوزش،در حال حاضر سیستم انتخابی غیرفعال میباشد.`',keyboard)
+              edit(q.inline_message_id,'>[فیلم های آموزشی ما در آپارات](https://aparat.com/tgMember)\n\n*فیلم های آموزشی ما را در کانال آپارات دنبال کنید*\nhttps://aparat.com/tgMember',keyboard)
             end
 							------------------------------------------------------------------------
 							if q.data:match('voicehelp') then
@@ -472,7 +472,7 @@ local hash = SUDO..'settings:'..chat..':'..value
                    {text = 'بازگشت به منوی اصلی ◀️', callback_data = 'firstmenu:'..chat},{text = 'صفحه قبلی ◀️', callback_data = 'helpbot:'..chat}
 				}
 							}
-              edit(q.inline_message_id,'`با عرض پوزش،در حال حاضر سیستم انتخابی غیرفعال میباشد.`',keyboard)
+              edit(q.inline_message_id,'>[تنظیمات دیگر گروه](https://telegram.me/tgGuard)\n*Lock X* بجای ایکس قفل تنظیمات مورد نظر را قرار دهید\n*X = * Spam/Links/Webpage/Tag/Hashtag/Fwd/Bots/Edit/Markdown/Mention/Pin/Inline/Farsi/English/Tgservice/Flood/Text/Photo/Video/Gif/Music/Voice/File/Sticker/Contact/Location\n*Unlock X* بجای ایکس قفل تنظیمات مورد نظر را قرار دهید\n*X = * Spam/Links/Webpage/Tag/Hashtag/Fwd/Bots/Edit/Markdown/Mention/Pin/Inline/Farsi/English/Tgservice/Flood/Text/Photo/Video/Gif/Music/Voice/File/Sticker/Contact/Location\n\n*Promote* @username|reply|user-id --انتخاب مالک فرعی از گروه با یوزرنیم|ریپلی|شناسه -فرد\n*Demote* @username|reply|user-id --حذف مالک فرعی از گروه با یوزرنیم|ریپلی|شناسه -فرد\n*setowner* @username|reply|user-id --انتخاب مالک اصلی از گروه با یوزرنیم|ریپلی|شناسه -فرد\n*Demowner* @username|reply|user-id --حذف مالک اصلی از گروه با یوزرنیم|ریپلی|شناسه -فرد*ownerlist* --دریافت لیست مدیران اصلی\n*Modlist* --دریافت لیست مدیران فرعی گروه\n*Del* --حذف پیام های گروه\n*setlang en/fa* تنظیم زبان ربات\n',keyboard)
             end
 							------------------------------------------------------------------------
 							------------------------------------------------------------------------
