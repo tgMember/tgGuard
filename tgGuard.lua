@@ -22,8 +22,8 @@ notify.init ("Telegram updates")
 chats = {}
 day = 86400
 --*********BOT ID*******--
-BOTS = 361871436  --[[Enter cli bot id]]
-bot_id = 361871436  --[[Enter cli bot id]]
+BOTS = 180191663  --[[Enter cli bot id]]
+bot_id = 180191663  --[[Enter cli bot id]]
 sudo_users = {158955285,279700027,180191663,361871436}  --[[Enter your id and helpcli bot id]]
 bot_owner = 158955285  --[[Enter your id]]
 
