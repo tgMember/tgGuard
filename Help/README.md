@@ -6,6 +6,15 @@
 
 ***
 
+### you must add robot to super group and send :
+## add
+### for add robot.
+
+
+### you can charge robot whit send :
+## charge unit
+
+
 ### you can send :
 ## help
 ### and select whit number for see opthin and command.
@@ -15,6 +24,11 @@
 ### change language too persian, and by send:
 ## setlang en
 ### change language too english.
+
+### for see and use inline opthin send :
+## settings
+### to super group.
+
 
 ### [tgChannel](https://t.me/tgMember)
 ### [Creator](https://t.me/sajjad_021)
