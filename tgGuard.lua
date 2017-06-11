@@ -34,7 +34,7 @@ bot_owner = 158955285  --[[Enter your id]]
 ---------------
 -----------------------------------------------------------------------------------------------
 function is_bot(msg)
-  if tonumber(BOTS) == 347831625 then  --[[Enter your cli bot id here]]
+  if tonumber(BOTS) == 347831625 then  --[[Enter your api bot id here]]
     return true
     else
     return false
