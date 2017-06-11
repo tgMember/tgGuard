@@ -96,7 +96,7 @@ for save press key's
 
 
 
-    - #### *Edit tgGuard.lua*
+   - #### *Edit tgGuard.lua*
 
 ```
 nano tgGuard.lua
