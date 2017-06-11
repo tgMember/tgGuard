@@ -1,33 +1,29 @@
-## Help
-
-***
-
 <p align="center"> <img class="td" style="vertical-align: middle;" src="https://github.com/sajjad-021/KingPKG/blob/master/logo.jpg" alt="" width="500" height="260" /></p>
 
 ***
 
-### you must add robot to super group and send :
-## add
-### for add robot.
+### _you must add robot to super group and send :_
+- ## `Add`
+### _for add robot._
 
 
-### you can charge robot whit send :
-## charge unit
+### *you can charge robot whit send :*
+## `Charge unit`
 
 
-### you can send :
-## help
-### and select whit number for see opthin and command.
+### _you can send :_
+- ## `Help`
+### _and select whit number for see opthin and command._
 
-### by send:
-## setlang fa
-### change language too persian, and by send:
-## setlang en
-### change language too english.
+### *by send:*
+- ## `Setlang fa`
+### *change language too persian, and by send:*
+- ## `Setlang en`
+### *change language too english.*
 
-### for see and use inline opthin send :
-## settings
-### to super group.
+### _for see and use inline opthin send :_
+- ## `settings`
+### _to super group._
 
 
 ### [tgChannel](https://t.me/tgMember)
