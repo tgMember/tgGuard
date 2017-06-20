@@ -1,0 +1,19 @@
+🔃List Of tgGuard Help :
+
+🔷Please choose a section to display❗️
+1️⃣ : Help For Bot Conditions
+2️⃣ : Help For General Options
+3️⃣ : Help For Media Options
+4️⃣ : Help For Flood & Spam
+5️⃣ : Help For GetRanks
+6️⃣ : Help For Set Gpinfo
+7️⃣ : Help For Lateral Options
+OR
+0️⃣ : For Cancel This Operation
+➖➖➖➖➖➖➖➖
+❗️Just Send The Intented Number
+    ➖➖➖➖➖➖➖
+       ➖➖➖
+         ➖
+`develop by @sajjad_021`
+tgChannel : @tgMember

@@ -1,0 +1,18 @@
+🔃Bot GetRanks Option
+
+ Set Group Admin And Owners :
+Set User Rank For Bot
+➡️ Command : Setowner
+➡️ Command : Demowner
+➡️ Command : Owner
+➡️ Command : Promote
+➡️ Command : Demote
+➡️ Command : Modlist
+➖➖➖➖➖➖
+➡️ Example : `Promote @sajjad_021'
+Promote 158955285
+➖➖➖➖➖➖
+➡️ Clean Lists :
+To Clean The List Of Sth
+➡️ Command : Clean (.*)
+(.*) = bots/banlist/modlist/filterlist/mutelist

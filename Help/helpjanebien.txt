@@ -1,0 +1,42 @@
+🔃tgGuard Lateral Options :
+
+➡️ Group /User Info  :
+To Get Group/User Information 
+➡️ Command : id
+➡️ Command : me
+➡️ Command : id @userid
+➖➖➖➖➖➖
+➡️ User Profile :
+To Get User Profile Photos 
+➡️ Command : Getpro [1 - 10]
+➡️ Example : Getpro 3
+➖➖➖➖➖➖
+➡️ Group Notify :
+To Pin Or Unpin Or Repin a Msg By Bot
+➡️ Command : Pin
+➡️ Command : Unpin
+➡️ Command : Repin
+➖➖➖➖➖➖
+➡️ Online Status :
+To See Bot Status
+➡️ Command : Ping
+➖➖➖➖➖➖
+➡️ Filtering :
+To Filter And Ban A Word
+➡️ Command : Filter [Word]
+➡️ Command : Unfilter [Word]
+➡️ Command : Filterlist
+➖➖➖➖➖➖
+➡️ Bot Lang :
+To Change Bot Return Language
+➡️ Command : Setlang en
+➡️ Command : Setlang fa
+➖➖➖➖➖➖
+➡️ Del Msgs :
+To Remove Msgs
+➡️ Command : Del [1 - 99]
+    ➖➖➖➖➖➖➖
+       ➖➖➖
+         ➖
+`develop by @sajjad_021`
+tgChannel : @tgMember

@@ -1,0 +1,12 @@
+tgGuard General Options
+➡️ Group Enable Settings :
+To Lock General Options 
+➡️ Command : Lock (.*)
+(.*) = Spam/Links/Webpage/Tag/Hashtag/Fwd/Bots/Edit/Markdown/Mention/Pin/Inline/Farsi/English/Tgservice/Flood
+➡️ Example : Lock Links
+➖➖➖➖➖➖
+➡️ Group Disable Settings :
+To Unlock General Options 
+➡️ Command : Unlock (.*)
+(.*) = Spam/Links/Webpage/Tag/Hashtag/Fwd/Bots/Edit/Markdown/Mention/Pin/Inline/Farsi/English/Tgservice/Flood
+➡️ Example : Unlock Links

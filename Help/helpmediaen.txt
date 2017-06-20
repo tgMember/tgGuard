@@ -1,0 +1,13 @@
+🔃Bot Media Options:
+
+➡️ Group Enable Settings For Media :
+To Lock Media Options 
+➡️ Command : Lock (.)
+(.) = Text/Photo/Video/Gif/Music/Voice/File/Sticker/Contact/Location
+➡️ Example : Lock photo
+➖➖➖➖➖➖
+➡️ Group Disable Settings For Media :
+To Unlock Media Options 
+➡️ Command : Unlock (.)
+(.) = Text/Photo/Video/Gif/Music/Voice/File/Sticker/Contact/Location
+➡️ Example : Unlock photo

@@ -1,0 +1,18 @@
+🔃Set Gpinfo Options:
+
+➡️ Set Group Information
+Use These Simple Commands To Set Link Rules and ...
+➡️ Command : Setlink
+➡️ Command : Link
+➡️ Command : Setrules
+➡️ Command : Rules
+➡️ Command : Note (Msg)
+➡️ Command : Getnote
+➡️ Command : Setphoto
+➡️ Command : Expire
+➡️ Command : Del (Num)
+➡️ Command : Welcome on
+➡️ Command : Welcome Off
+➡️ Command : Set welcome (Text)
+➡️ Command : Del welcome
+➡️ Command : Get welcome
