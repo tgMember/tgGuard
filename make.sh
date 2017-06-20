@@ -107,14 +107,18 @@ fi
 
 if [ "$1" = "api" ]; then
 while true; do
-screen -S nohup lua api.lua
+  screen -S nohup lua api.lua
 done
 fi
 
 if [ "$1" = "bot" ]; then
-while true; do
-screen -S nohup ./telegram-cli -s tgGuard.lua
-done
+COUNTER=0
+  while [ $COUNTER -lt 5 ]; do
+       tmux kill-session -t script
+           tmux new-session -s script "./telegram-cli -s tgGuard.lua"
+        tmux detach -s script
+    sleep 1
+  done
 fi
 
 if [ ! -f telegram-cli ]; then
