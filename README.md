@@ -151,7 +151,8 @@ open server and send belove command:
 
 
 ```bash
-./make.sh bot
+cd tgGuard
+screen -S nohup ./make.sh bot
     # Will ask you for robot phone number & confirmation code.
 ```
 
