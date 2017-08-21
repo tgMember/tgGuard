@@ -718,6 +718,9 @@ function tdcli_update_callback(data)
         text = msg.content_.text_
         print("This is [ Text ]")
         msg_type = 'MSG:Text'
+	if text:match('^[/!#@$&*]') then
+            text = text:gsub('^[/!#@$&*]','')
+         end
       end
       -------------------------
       if msg.content_.ID == "MessagePhoto" then
