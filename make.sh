@@ -3,6 +3,8 @@
 THIS_DIR=$(cd "$(dirname "$0")"; pwd)
 cd "$THIS_DIR"
 
+luarocks_version=2.4.2
+
 function logo() {
     declare -A logo
     seconds="0.002"
@@ -37,16 +39,11 @@ function update() {
 lualibs=(
 'luasec'
 'socket'
-'luarepl'
 'lbase64 20120807-3'
 'luafilesystem'
 'lub'
 'auth'
-'lua-term'
 'Lua-cURL'
-'multipart-post'
-'lanes'
-'multipart-post'
 'luaexpat'
 'redis-lua'
 'lua-cjson'
@@ -57,48 +54,37 @@ lualibs=(
 'serpent'
 )
 
-basepkg="libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-dev libevent-dev libjansson* libpython-dev make autoconf unzip git redis-server g++"
+basepkg="libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-dev libevent-dev libjansson* libpython-dev make autoconf unzip git redis-server g++ libnotify-dev libstdc++6 lua-lgi luarocks libexpat1-dev wget unzip c++ tmux openssl coreutils libc6 libpcre3-dev libreadline-dev lua-socket lua-sec lua-expat"
 
 pkg=(
+'libreadline-dev'
 'libconfig-dev'
-'libjansson-dev'
-'libpcre3-dev'
-'libevent-dev'
-'libconfig-dev'
-'luarocks'
+'libssl-dev'
 'lua5.2'
 'liblua5.2-dev'
-'redis-server'
-'libssl-dev'
-'libreadline-dev'
+'libevent-dev'
+'libjansson*'
 'libpython-dev'
-'libexpat1-dev'
-'git'
-'wget'
-'unzip'
 'make'
 'autoconf'
-'c++'
+'unzip'
+'git'
+'redis-server'
 'g++'
+'libnotify-dev'
+'libstdc++6'
+'lua-lgi'
+'luarocks'
+'libexpat1-dev'
+'wget'
+'unzip'
+'c++'
 'tmux'
 'openssl'
 'coreutils'
-'g++4.7'
-'c++4.7'
-'lua5.2'
-'liblua5.2-dev'
-'fortune-mod'
-'fortunes'
 'libc6'
 'libpcre3-dev'
-'libconfig-dev'
-'libssl-dev'
 'libreadline-dev'
-'libconfig-dev'
-'libevent-dev'
-'libjansson-dev'
-'libpython-dev'
-'libexpat1-dev'
 'lua-socket'
 'lua-sec'
 'lua-expat'
@@ -106,37 +92,56 @@ pkg=(
 
 today=`date +%F`
 
+get_sub() {
+    local flag=false c count cr=$'\r' nl=$'\n'
+    while IFS='' read -d '' -rn 1 c; do
+        if $flag; then
+            printf '%c' "$c"
+        else
+            if [[ $c != $cr && $c != $nl ]]; then
+                count=0
+            else
+                ((count++))
+                if ((count > 1)); then
+                    flag=true
+                fi
+            fi
+        fi
+    done
+}
+
+make_progress() {
+exe=`lua <<-EOF
+    print(tonumber($1)/tonumber($2)*100)
+EOF
+`
+    echo ${exe:0:4}
+}
+
 function download_libs_lua() {
-    if [[ ! -d "logs" ]]; then mkdir logs; fi
-    if [[ -f "logs/logluarocks_${today}.txt" ]]; then rm logs/logluarocks_${today}.txt; fi
     local i
     for ((i=0;i<${#lualibs[@]};i++)); do
         printf "\r\33[2K"
-        printf "\rtgMember: Please Wait ... [$(($i+1))/${#lualibs[@]}] ${lualibs[$i]}"
-        "$THIS_DIR"/.luarocks/bin/luarocks install ${lualibs[$i]} &>> logs/logluarocks_${today}.txt
+        printf "\rtgMember: wait... [`make_progress $(($i+1)) ${#lualibs[@]}`%%] [$(($i+1))/${#lualibs[@]}] ${lualibs[$i]}"
+        ./.luarocks/bin/luarocks install ${lualibs[$i]} &>> ./.luarocks/logluarocks_${today}.txt
     done
     sleep 0.2
-    printf "\nLogfile created: $PWD/logs/logluarocks_${today}.txt\nDone\n"
+    rm -rf luarocks-2.2.2*
 }
 
 function configure() {
-    if [[ -f "/usr/bin/lua5.3" ]] || [[ -f "/usr/bin/lua5.1" ]] || [[ -f "/usr/local/bin/lua5.3" ]]; then
-    	sudo apt remove -y lua5.3 &>/dev/null
-	    sudo apt -y autoremove &>/dev/null
-	    sudo apt install -y lua5.2 &>/dev/null
-      echo -e "\n\033[0;31m TeleGram Advertising Download Libs ... \033[0m\n"
-     fi
-  	git clone https://github.com/keplerproject/luarocks.git &>/dev/null
-  	cd luarocks
-	
-  	PREFIX="$THIS_DIR/.luarocks"
-
-  	./configure --prefix="$PREFIX" --sysconfdir="$PREFIX"/luarocks --force-config &>/dev/null
-  	make build &>/dev/null
-	sudo make install &>/dev/null
-	make bootstrap &>/dev/null
-	cd ..
-	rm -rf luarocks
+    dir=$PWD
+    wget http://luarocks.org/releases/luarocks-${luarocks_version}.tar.gz &>/dev/null
+    tar zxpf luarocks-${luarocks_version}.tar.gz &>/dev/null
+    cd luarocks-${luarocks_version}
+    if [[ ${1} == "--no-null" ]]; then
+        ./configure --prefix=$dir/.luarocks --sysconfdir=$dir/.luarocks/luarocks --force-config
+        make bootstrap
+    else
+        ./configure --prefix=$dir/.luarocks --sysconfdir=$dir/.luarocks/luarocks --force-config &>/dev/null
+        make bootstrap &>/dev/null
+    fi
+    cd ..; rm -rf luarocks*
     if [[ ${1} != "--no-download" ]]; then
         download_libs_lua
     fi
@@ -144,7 +149,6 @@ function configure() {
         printf "\rConfiguring... [%i%%]" $i
         sleep 0.007
     done
-    printf "\nDone\n"
 }
 
 function installation() {
@@ -152,14 +156,14 @@ for i in $(seq 1 100); do
     sleep 0.05
     sudo apt-get install $basepkg  -y --force-yes &>/dev/null
     if [ $i -eq 100 ]; then
-        echo -e "XXX\n100\nDone!\nXXX"
+        echo -e "XXX\n100\n\033[1;33mInstall Luarocks and Download Libs\033[0;00m\nXXX"
     elif [ $(($i % 4)) -eq 0 ]; then
         let "is = $i / 4"
         echo -e "XXX\n$i\n${pkg[is]}\nXXX"
     else
         echo $i
     fi 
-done | whiptail --title 'TeleGram Guard Robot Install and Configuration' --gauge "${pkg[0]}" 6 60 0
+done | whiptail --title 'TeleGram Guard robot Install and Configuration' --gauge "${pkg[0]}" 6 60 0
 }
 
 api() {
