@@ -140,7 +140,7 @@ function configure() {
         download_libs_lua
     fi
 		for ((i=0;i<101;i++)); do
-        printf "\n\rConfiguring... [%i%%]\n" $i
+        printf "\rConfiguring... [%i%%]" $i
         sleep 0.007
     done
 }
