@@ -127,8 +127,8 @@ function configure() {
     if [[ ${1} == "--no-null" ]]; then
         ./configure --prefix=$dir/.luarocks --sysconfdir=$dir/.luarocks/luarocks --force-config
 	      make bootstrap
-				make build
-				make install
+		make build
+		make install
     else
         ./configure --prefix=$dir/.luarocks --sysconfdir=$dir/.luarocks/luarocks --force-config &>/dev/null
 	      make bootstrap &>/dev/null
@@ -139,7 +139,7 @@ function configure() {
     if [[ ${1} != "--no-download" ]]; then
         download_libs_lua
     fi
-		for ((i=0;i<101;i++)); do
+for ((i=0;i<101;i++)); do
         printf "\rConfiguring... [%i%%]" $i
         sleep 0.007
     done
@@ -158,10 +158,10 @@ function installation() {
     else
         echo $i
     fi 
-done | whiptail --title 'TeleGram Advertising bot Install and Configuration' --gauge "${pkg[0]}" 6 60 0
+done | whiptail --title 'TeleGram Guard bot Install and Configuration' --gauge "${pkg[0]}" 6 60 0
 
 api() {
-	 echo -e "\n\033[38;5;27mPut your Token\n\033[38;5;208m\n\033[6;48m\n"
+	echo -e "\n\033[38;5;27mPut your Token\n\033[38;5;208m\n\033[6;48m\n"
 read -rp '' TKN
  echo "#!/bin/bash
 	while true; do
