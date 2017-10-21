@@ -1,6 +1,8 @@
 
-# [tgGuard v8.0](https://t.me/tgGuard) 
+# [tgGuard v9.0](https://t.me/tgGuard) 
 ```TeleGram Guard Inline Version```
+
+#### *Base ESET Source*
 
 
 ## _frist telegram anti spam and group moderation whit :_
@@ -16,7 +18,7 @@
 ***
 
 
-<p align="center"> <img class="td" style="vertical-align: middle;" src="https://tgmemberplus.000webhostapp.com/tgguard.jpg" alt="" width="320" height="320" /></p>
+<p align="center"> <img class="td" style="vertical-align: middle;" src="https://github.com/tgMember/tgGuard/blob/master/Help/tgGuard.jpg" alt="" width="470" height="260" /></p>
 
 
 
@@ -41,6 +43,9 @@ trun on inline mode, inline location and change Inline feedback to 100%
 revoke token
 
 
+##### *Dont forget ```/start``` api robot with your telegram account and cli bot*
+
+
 ***
 
 
@@ -49,10 +54,8 @@ revoke token
 
 test with Ubuntu 16.04 x64:
 ```bash
-git clone https://github.com/tgMember/tgGuard.git && cd tgGuard && bash make.sh
+git clone https://github.com/tgMember/tgGuard.git && cd tgGuard && bash make
 ```
-
-for install press key's "y" then "enter"
 
 
 ***
@@ -60,120 +63,50 @@ for install press key's "y" then "enter"
 
 ## _Set Configuratin_
 
-##### *After install compelet, you must edit `api.lua` and `tgGuard.lua` with belove command*
 
-_every where write `api bot id` you must insert robot api id created with botfather._
-
-_every where write `cli bot id` you must insert telegram account id._
-
-_every where write `your id` or `owner` you must insert your acoount id._
-
-
-   - #### *Edit api.lua*
+#### *After install compelet, you must run cli robot for create ```Config.lua``` with belove command*
 
 
 ```
-nano api.lua
+./make
 ```
 
-replase your information in:
-
-  line 8 = api bot token
- 
-  line 11 = your id (owner)
-  
-  line 15 = your id & cli bot id & other sudo user's
-  
-  line 165 =  #Cli Bot Id   -   #Your Id
- 
-for save press key's
-
- "ctrl+x" 
- 
- "y" 
-  
- "enter"
+##### _Put your (owner) user id_
+##### *Put Cli bot user id*
+##### *Put Token robot*
+##### *Put tgMember for Licence*
+##### *Put 1 for Redis number (for more robot enter another numeric)*
+##### *and put 2 for channel id*
+##### *Launch Cli Bot*
 
 
+## _Launch Api & Cli Robot_
 
-   - #### *Edit tgGuard.lua*
+
+##### *Afrer Enter information and areated Config close your server and open again*
+
 
 ```
-nano tgGuard.lua
-```
-
-edit and replace
-
- line 25 = cli bot id 
- 
- line 26 = cli bot id 
-
- line 27 = your id (owner)
-
- line 28 = your id & cli bot id & other sudo user's
- 
- line 35 = api bot id
-
- line 5946 = api bot id
-
-
-for save press key's
-
- "ctrl+x" 
- 
- "y" 
-  
- "enter"
-
-
-***
-
-
-## _Run API Robot_
-
-###### *From cli robot account, start api bot (created with botfather)*
-
-Now send command to server:
-
-```
-./make.sh api
-```
-
-close server.
-
-
-***
-
-
-## _Launch Cli Bot_
-
-open server and send belove command:
-
-
-```bash
 cd tgGuard
-screen -S nohup ./make.sh bot
-    # Will ask you for robot phone number & confirmation code.
+./make
 ```
 
+#### you can test robots with ```ping``` command.
 
-***
 
+if run only one robot, close ```killall make``` and ```killall lua``` and killall tmux``` and run again with ```./make```
 
-## _Help and commands_ 
-
-##### *Now you must go to your telegram account and add cli bot to super group and send :*
-
-#### settings
-
-##### *for see inline settings and help*
-   
-   
-- _Don't use_  ! , # , /   _before command_.
 
 
 ***
 
 
-# [Creator](https://telegram.me/sajjad_021)
-# [Channel](https://telegram.me/tgMember)
+## _Cr4ck & Edit_
+
+### [sajjad_021](https://telegram.me/sajjad_021)
+### [tgMember](https://telegram.me/tgMember)
+
+
+*Special thanks from Developer*
+
+#### [sajjad momen](https://t.me/EndlessLine) and [ESET Nod32 Team](https://t.me/EsetCliAntiSpam) 
