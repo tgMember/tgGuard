@@ -33,13 +33,12 @@ function update() {
   sudo git fetch --all
   sudo git reset --hard origin/master
   sudo git pull origin master
-  sudo chmod +x TG
+  sudo chmod +x make
 }
 
 lualibs=(
 'luasec'
-'socket'
-'lbase64 20120807-3'
+'lbase64'
 'luafilesystem'
 'luasocket'
 'lua-term'
@@ -48,6 +47,7 @@ lualibs=(
 'lanes'
 'ltn12'
 'lub'
+'lgi'
 'auth'
 'Lua-cURL'
 'luaexpat'
@@ -133,13 +133,13 @@ function configure() {
     if [[ ${1} == "--no-null" ]]; then
         ./configure --prefix=$dir/.luarocks --sysconfdir=$dir/.luarocks/luarocks --force-config
 	      make bootstrap
-				make build
-				make install
+		make build
+		make install
     else
         ./configure --prefix=$dir/.luarocks --sysconfdir=$dir/.luarocks/luarocks --force-config &>/dev/null
 	      make bootstrap &>/dev/null
-				make build &>/dev/null
-				make install &>/dev/null
+		make build &>/dev/null
+		make install &>/dev/null
     fi
     cd ..; rm -rf luarocks*
     if [[ ${1} != "--no-download" ]]; then
@@ -153,14 +153,14 @@ function configure() {
 
 function installation() {
 	for i in $(seq 1 100); do
-			sudo apt-get install ${pkg[$i]} -y --force-yes &>> .is.out
+	sudo apt-get install ${pkg[$i]} -y --force-yes &>> .is.out
     sleep 0.5
     if [ $i -eq 100 ]; then
         echo -e "XXX\n100\nInstall Luarocks and Download Libs\nXXX"
     elif [ $(($i % 1)) -eq 0 ]; then
         let "is = $i / 4"
         echo -e "XXX\n$i\n${pkg[is]}\nXXX"
-				sudo apt-get install ${pkg[is]} -y --force-yes &>> .is2.out
+	sudo apt-get install ${pkg[is]} -y --force-yes &>> .is2.out
     else
         echo $i
     fi 
@@ -184,13 +184,11 @@ printf "\e[38;0;0m\t"
 sudo apt-get update -y &>/dev/null
 	sudo apt-get -y remove lua5.3 &>/dev/null
 	echo -e "\n\033[1;31mPlease Waite ... \033[0;00m\n"
-	sudo apt-get -y update &>/dev/null; sudo apt-get upgrade -y --force-yes &>/dev/null; sudo apt-get dist-upgrade -y --force-yes &>/dev/null
 	dpkg --configure -a &>/dev/null
  	chmod 777 make
 	installation ${@}
 	rm -rf README.md
  	configure ${2}
-	sudo apt-get -y update &>/dev/null; sudo apt-get upgrade -y --force-yes &>/dev/null; sudo apt-get dist-upgrade -y --force-yes &>/dev/null
 	wget "https://valtman.name/files/telegram-cli-1222" 2>&1 | get_sub &>/dev/null
 	mv telegram-cli-1222 telegram-cli; chmod +x telegram-cli
   echo -e "\n\033[1;32mInstall Complete\033[0;00m\n"
