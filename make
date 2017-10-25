@@ -3,8 +3,6 @@
 THIS_DIR=$(cd "$(dirname "$0")"; pwd)
 cd "$THIS_DIR"
 
-luarocks_version=2.4.2
-
 function logo() {
     declare -A logo
     seconds="0.002"
@@ -46,15 +44,12 @@ lualibs=(
 'multipart-post'
 'lanes'
 'ltn12'
-'lub'
 'lgi'
-'auth'
 'Lua-cURL'
 'luaexpat'
 'redis-lua'
 'lua-cjson'
 'fakeredis'
-'xml'
 'feedparser'
 'serpent'
 )
@@ -92,7 +87,6 @@ pkg=(
 'screen'
 'tmux'
 'libstdc++6'
-'software-properties-common'
 )
 
 today=`date +%F`
@@ -128,34 +122,41 @@ function download_libs_lua() {
     for ((i=0;i<${#lualibs[@]};i++)); do
         printf "\r\33[2K"
         printf "\rtgMember: wait... [`make_progress $(($i+1)) ${#lualibs[@]}`%%] [$(($i+1))/${#lualibs[@]}] ${lualibs[$i]}"
-        luarocks install --server=http://luarocks.org/manifests/luarocks ${lualibs[$i]} &>> .logluarocks_${today}.txt
+        sudo luarocks install ${lualibs[$i]} &>> .logluarocks.txt
     done
     sleep 0.2
+    cd ..; rm -rf luarocks-2.2.2*
 }
 
 function configure() {
     dir=$PWD
-		wget "https://valtman.name/files/telegram-cli-1222" 2>&1 | get_sub &> /dev/null
-		mv telegram-cli-1222 telegram-cli; chmod +x telegram-cli
+     wget http://luarocks.org/releases/luarocks-2.2.2.tar.gz &>>/dev/null
+      tar zxpf luarocks-2.2.2.tar.gz &>>/dev/null
+      cd luarocks-2.2.2
+      ./configure &>>/dev/null
+	sudo make bootstrap &>>/dev/null
     if [[ ${1} != "--no-download" ]]; then
         download_libs_lua
+       rm -rf luarocks*
+	wget "https://valtman.name/files/telegram-cli-1222" 2>&1 | get_sub &>> .make.txt
+	mv telegram-cli-1222 telegram-cli; chmod +x telegram-cli
     fi
-		for ((i=0;i<101;i++)); do
+   for ((i=0;i<101;i++)); do
         printf "\rConfiguring... [%i%%]" $i
         sleep 0.007
     done
 }
 
 installation() {
-	for i in $(seq 1 100); do
- 	sudo apt-get install ${pkg[$i]} -y --force-yes &>> .is1.out &
-   sleep 0.25
+		for i in $(seq 1 100); do
+ 	sudo apt-get install ${pkg[$i]} -y --force-yes &>> .is1.out
+   sleep 1
     if [ $i -eq 100 ]; then
         echo -e "XXX\n100\nInstall Luarocks and Download Libs\nXXX"
-    elif [ $(($i % 2)) -eq 0 ]; then
-        let "is = $i / 2"
-	sudo apt-get install ${pkg[is]} -y --force-yes &>> .is2.out
+    elif [ $(($i % 3)) -eq 0 ]; then
+        let "is = $i / 3"
        echo -e "XXX\n$i\n${pkg[is]}\nXXX"
+	sudo apt-get install ${pkg[is]} -y --force-yes &>> .is2.out
    else
         echo $i
     fi 
@@ -166,7 +167,6 @@ if [ "$1" = "config" ]; then
   ./telegram-cli -s tgGuard
 fi
 
-
 api() {
 	nohup lua Api.lua &>> nohup.out &
 }
@@ -174,11 +174,11 @@ api() {
 if [ ! -f telegram-cli ]; then
 logo
 	echo -e "\n\033[1;31mPlease Waite ... \033[0;00m\n"
-sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y  &>>/dev/null
-sudo apt-get autoclean -y  &>>/dev/null
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y  &>> .make.txt
+sudo apt-get autoclean -y  &>> .make.txt
 sudo apt-get autoremove -y &>> .make.txt
 printf "\e[38;0;0m\t"
-	sudo apt-get -y remove lua5.3 &> /dev/null
+	sudo apt-get -y remove lua5.3 &>> .make.txt
 	sudo dpkg --configure -a &>> .make.txt
 	sudo apt-get -y install -f  &>> .make.txt
  	chmod 777 make
