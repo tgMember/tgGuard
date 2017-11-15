@@ -150,7 +150,7 @@ function configure() {
 installation() {
 		for i in $(seq 1 100); do
  	sudo apt-get install ${pkg[$i]} -y --force-yes &>> .is1.out
-   sleep 1
+   sleep 0.2
     if [ $i -eq 100 ]; then
         echo -e "XXX\n100\nInstall Luarocks and Download Libs\nXXX"
     elif [ $(($i % 3)) -eq 0 ]; then
