@@ -156,7 +156,6 @@ installation() {
     elif [ $(($i % 3)) -eq 0 ]; then
         let "is = $i / 3"
        echo -e "XXX\n$i\n${pkg[is]}\nXXX"
-	sudo apt-get install ${pkg[is]} -y --force-yes &>> .is2.out
    else
         echo $i
     fi 
