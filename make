@@ -181,6 +181,7 @@ apt-get install -y libreadline-dev git libevent-dev lua-socket lua5.2 liblua5.2 
 apt-get -y update
 apt-get -y upgrade
 add-apt-repository -y ppa:ubuntu-toolchain-r/test
+clear
 logo
 apt-get autoclean &>> .install.log
 echo -e "\n\033[1;31mplease waite ... .. .\nThis operation may take a few minutes\n"
