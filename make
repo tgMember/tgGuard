@@ -55,21 +55,15 @@ lualibs=(
 )
 
 pkg=(
-'libreadline-dev'
 'libconfig-dev'
 'libssl-dev'
-'lua5.2'
-'liblua5.2-dev'
 'libevent-dev'
 'lua-sec'
-'lua-lgi'
 'openssl'
 'gcc'
 'make'
 'unzip'
-'git'
 'wget'
-'redis-server'
 'c++'
 'g++'
 'libjansson-dev'
@@ -79,8 +73,6 @@ pkg=(
 'expat'
 'libexpat1-dev'
 'luarocks'
-'lua5.1'
-'lua5.1-dev'
 'lua-socket'
 'curl'
 'libcurl4-gnutls-dev'
@@ -117,7 +109,7 @@ EOF
     echo ${exe:0:4}
 }
 
-function download_libs_lua() {
+download_libs_lua() {
     local i
     for ((i=0;i<${#lualibs[@]};i++)); do
         printf "\r\33[2K"
@@ -128,27 +120,39 @@ function download_libs_lua() {
     cd ..; rm -rf luarocks-2.2.2*
 }
 
-function configure() {
+configure() {
     dir=$PWD
-     wget http://luarocks.org/releases/luarocks-2.2.2.tar.gz &>>/dev/null
-      tar zxpf luarocks-2.2.2.tar.gz &>>/dev/null
+     wget http://luarocks.org/releases/luarocks-2.2.2.tar.gz &>> .install.log
+      tar zxpf luarocks-2.2.2.tar.gz &>> .install.log
       cd luarocks-2.2.2
-      ./configure &>>/dev/null
-	sudo make bootstrap &>>/dev/null
+      ./configure &>> .install.log
+	make bootstrap &>> .install.log
     if [[ ${1} != "--no-download" ]]; then
         download_libs_lua
-       rm -rf luarocks*
 	wget "https://valtman.name/files/telegram-cli-1222" 2>&1 | get_sub &>> .make.txt
 	mv telegram-cli-1222 telegram-cli; chmod +x telegram-cli
+       rm -rf luarocks*
     fi
-   for ((i=0;i<101;i++)); do
-        printf "\rConfiguring... [%i%%]" $i
-        sleep 0.007
-    done
+}
+
+
+installation() {
+	for i in $(seq 1 100); do
+	    sleep 0.2
+    		if [ $i -eq 100 ]; then
+        		echo -e "XXX\n100\nDone!\nXXX"
+    		   elif [ $(($i % 6)) -eq 0 ]; then
+			  let "phase = $i / 6"
+        		  echo -e "XXX\n$i\n${pkg[phase]}\nXXX"
+			 sudo apt-get install -y ${pkg[$phase]} &>> .install.log
+		    else
+        		echo $i
+    		fi 
+done | whiptail --title 'TeleGram Advertising bot Install and Configuration' --gauge "${pkg[0]}" 6 60 0
 }
 
 installation() {
-		for i in $(seq 1 100); do
+for i in $(seq 1 100); do
  	sudo apt-get install ${pkg[$i]} -y --force-yes &>> .is1.out
    sleep 0.2
     if [ $i -eq 100 ]; then
@@ -171,19 +175,23 @@ api() {
 }
 
 if [ ! -f telegram-cli ]; then
+apt-get -y update
+apt-get -y upgrade
+apt-get install -y libreadline-dev git libevent-dev lua-socket lua5.2 liblua5.2 redis-server software-properties-common g++ libconfig++-dev lua-lgi whiptail
+apt-get -y update
+apt-get -y upgrade
+add-apt-repository -y ppa:ubuntu-toolchain-r/test
 logo
-	echo -e "\n\033[1;31mPlease Waite ... \033[0;00m\n"
-sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y  &>> .make.txt
-sudo apt-get autoclean -y  &>> .make.txt
-sudo apt-get autoremove -y &>> .make.txt
+apt-get autoclean &>> .install.log
+echo -e "\n\033[1;31mplease waite ... .. .\nThis operation may take a few minutes\n"
+apt-get -y autoremove &>> .install.log
+apt-get -y update &>> .install.log
+apt-get -y dist-upgrade &>> .install.log
+rm -rf README.md
 printf "\e[38;0;0m\t"
-	sudo apt-get -y remove lua5.3 &>> .make.txt
-	sudo dpkg --configure -a &>> .make.txt
-	sudo apt-get -y install -f  &>> .make.txt
- 	chmod 777 make
-	installation ${@}
-	rm -rf README.md
- 	configure ${2}
+chmod 7777 make
+installation ${@}
+configure ${2}
   echo -e "\n\033[1;32mInstall Complete\033[0;00m\n"
  	sudo service redis-server restart &>/dev/null
  	sudo service redis-server start &>/dev/null
