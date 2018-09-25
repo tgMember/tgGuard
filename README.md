@@ -26,9 +26,9 @@
 
 [![https://github.com/tgMember/tGuard](https://img.shields.io/badge/%F0%9F%92%AC_GitHub-tGuard-green.svg)](https://github.com/tgMember/tGuard)
 
-[![http://tgmember.cf](https://img.shields.io/badge/webpage-tgMember-ff69b4.svg)](http://tgmember.cf)
+[![http://tgmember.com](https://img.shields.io/badge/webpage-tgMember-ff69b4.svg)](http://tgmember.cf)
 
-[![https://t.me/tgMember](https://img.shields.io/badge/%F0%9F%92%AC_Telegram-tgMember-blue.svg)](https://t.me/tgMember)
+[![https://t.me/tgMemberofficial](https://img.shields.io/badge/%F0%9F%92%AC_Telegram-tgMember-blue.svg)](https://t.me/tgMember)
 
 
 ***
@@ -104,7 +104,7 @@ if run only one robot, close ```killall make``` and ```killall lua``` and killal
 ## _Cr4ck & Edit_
 
 ### [sajjad_021](https://telegram.me/sajjad_021)
-### [tgMember](https://telegram.me/tgMember)
+### [tgMember](https://telegram.me/tgMemberOfficial)
 
 
 *Special thanks from Developer*
