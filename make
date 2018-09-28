@@ -13,7 +13,7 @@ logo[3]="/ /_  _  /_/ /  _  /  / /  /  __/_  / / / / /_  /_/ //  __/_  /    "
 logo[4]="\__/  _\__, /   /_/  /_/   \___/ /_/ /_/ /_/ /_.___/ \___/ /_/     "
 logo[5]="      /____/                                                       "
 logo[6]=""
-logo[7]="Channel : @tgMember"
+logo[7]="Channel : @tgMemberOfficial"
 logo[8]="Develop by @sajjad_021"
 printf "\e[38;5;154m\n\e[38;7;27m\t"
     for i in ${!logo[@]}; do
