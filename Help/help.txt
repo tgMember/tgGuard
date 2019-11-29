@@ -1,165 +1,19 @@
-◾️Help English▪️
-⚜️TeleGram Guard Robot⚜️
+🔃لیست بخش های اصلی ربات تلگرام گارد:
 
-🔰Lock spam
-🔰Unlock spam
-🔰Setspam [ 40 ~ ... ]
+🔹لطفا یک بخش را برای نمایش انتخاب کنید ❗️
 
-🔰Lock links
-🔰Unlock links
+1⃣ : بخش مربوط به فعال یا غیرفعال سازی وضعیت های ربات
+2⃣ : بخش مربوط به فعال یا غیرفعال سازی قفل های اصلی
+3⃣ : بخش مربوط به فعال یا غیرفعال سازی قفل های رسانه
+4⃣ : بخش مربوط به تغییر وضعیت و حساسیت قفل فلود و اسپم
+5⃣ : بخش مربوط به ارتقا و عزل مقام یک کاربر
+6⃣ : بخش مربوط به تنظیم و دریافت لینک گروه
+7⃣ : بخش مربوط به امکانات جانبی ربات
+0⃣ : لغو عملیات
 
-🔰Lock webpage
-🔰Unlock webpage
-
-🔰LLock all
-🔰Lock gtime 1
-🔰Unlock all
-
-🔰Lock tag
-🔰Unlock tag
-
-🔰Lock hashtag
-🔰Unlock hashtag
-
-🔰Lock fwd
-🔰Unlock fwd
-
-🔰Lock bots
-🔰Unlock bots
-🔰Clean bots
-
-🔰Lock cmd
-🔰Unlock cmd
-
-🔰Lock edit
-🔰Unlock edit
-
-🔰Lock markdown
-🔰Unlock markdown
-
-🔰Lock mention
-🔰Unlock mention
-
-🔰Lock pin
-🔰Unlock pin
-
-🔰Lock inline
-🔰Unlock inline
-
-🔰Lock farsi
-🔰Unlock farsi
-
-🔰Lock english
-🔰Unlock english
-
-🔰Lock tgservice
-🔰Unlock tgservice
-
-🔰Lock strict
-🔰Unlock strict
-
-🔰Lock flood
-🔰Unlock flood
-
-🔰Lock game
-🔰Unlock game
- 
-
-🔰Floodstatus del
-🔰Floodstatus remove
-🔰Setflood [ 2 ~ ... ]
-
-🔰Lock text
-🔰Unlock text
-
-🔰Lock photo
-🔰Unlock photo
-
-🔰Lock video
-🔰Unlock video
-
-🔰Lock gif
-🔰Unlock gif
-
-🔰Lock music
-🔰Unlock music
-
-🔰Lock voice
-🔰Unlock voice
-
-🔰Lock file
-🔰Unlock file
-
-🔰Lock sticker
-🔰Unlock sticker
-
-🔰Lock contact
-🔰Unlock contact
-
-🔰Lock location
-🔰Unlock location
-
-🔰Lock duplipost
-🔰Unlock duplipost
-
-🔰Lock post
-🔰Unlock post
-
-🔰Lock selfvideo
-🔰Unlock selfvideo
-
-🔰Lock auto
-🔰Unlock auto
-🔰Settime
-
-🔰Promote
-🔰Demote
-🔰modlist
-🔰Clean modlist
-
-🔰Muteuser
-🔰Unmuteuser
-🔰Mutelist
-🔰Clean mutelist
-
-🔰Ban
-🔰Unban
-🔰Banlist
-🔰Clean banlist
-
-
-🔰Filter ...
-🔰Unfilter ...
-🔰Filterlist
-🔰Clean filterlist
-
-🔰 Setrules ...
-🔰 Rules
-
-🔰 Setlink
-🔰 Link
-
-🔰Ping
-🔰Support
-🔰Expire
-🔰Settings
-
-🔰Setlang fa
-🔰Setlang en
-
-🔰Warn
-🔰Unwarn
-🔰Warnstatus remove
-🔰Warnstatus mute
-🔰Setwarn [ 2 ~ 30 ]
-
-🔰Pin
-🔰Unpin
-🔰Repin
-
-🔰Setvip
-🔰Demvip
-🔰Viplist
-🔰Clean viplist
-
-`tgMember by sajjad_021`
+❗️ برای دریافت راهنمای بخش مورد نظر کافیست شماره آن را ارسال کنید
+    ➖➖➖➖➖➖➖
+       ➖➖➖
+         ➖
+`develop by @sajjad_021`
+ www.tgmember.com
