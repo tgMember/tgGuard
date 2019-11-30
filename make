@@ -195,7 +195,11 @@ if [[ ! -f "telegram-cli" ]] || [[ ! -f "Config.lua" ]] ; then
         apt install -y libreadline6-dev
         apt install -y libevent-2.0
         apt install -y libevent-dev
-
+        apt install -y tmux libconfig-dev libjansson-dev libssl-dev
+        apt autoremove -y
+        wget http://security.debian.org/debian-security/pool/updates/main/o/openssl/libssl1.0.0_1.0.1t-1+deb8u12_amd64.deb
+        dpkg -i libssl1.0.0_1.0.1t-1+deb8u12_amd64.deb
+        rm -rf *.deb
     echo -e "\n\033[1;32mInstall Complete\033[0;00m\n"
         rm -rf *.deb
     sleep 2
