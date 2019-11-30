@@ -27,11 +27,11 @@ printf "\n"
 }
 
 function update() {
-  sudo git pull
-  sudo git fetch --all
-  sudo git reset --hard origin/master
-  sudo git pull origin master
-  sudo chmod +x TG
+  git pull
+  git fetch --all
+  git reset --hard origin/master
+  git pull origin master
+  chmod +x make
 }
 
 lualibs=(
@@ -113,9 +113,9 @@ function download_libs_lua() {
 
 function configure() {
     if [[ -f "/usr/bin/lua5.3" ]] || [[ -f "/usr/bin/lua5.1" ]] || [[ -f "/usr/local/bin/lua5.3" ]]; then
-        sudo apt remove -y lua5.3 &>/dev/null
-            sudo apt -y autoremove &>/dev/null
-            sudo apt install -y lua5.2 &>/dev/null
+        apt remove -y lua5.3 &>/dev/null
+            apt -y autoremove &>/dev/null
+            apt install -y lua5.2 &>/dev/null
       echo -e "\n\033[0;31m tgGuard Download Libs ... \033[0m\n"
      fi
         git clone https://github.com/keplerproject/luarocks.git &>/dev/null
@@ -123,7 +123,7 @@ function configure() {
 
         ./configure --force-config >>/dev/null
         make build &>/dev/null
-        sudo make install &>/dev/null
+        make install &>/dev/null
         make bootstrap &>/dev/null
         cd ..
 
@@ -141,7 +141,7 @@ function configure() {
 function installation() {
     local i
     for ((i=0;i<${#pkg[@]};i++)); do
-        sudo apt-get install ${pkg[$i]} -y --force-yes &>>/dev/null
+        apt install ${pkg[$i]} -y --force-yes &>>/dev/null
     if [ $i -eq 100 ]; then
         echo -e "XXX\n100\nInstall \nXXX"
     elif [ $(($i % 1)) -eq 0 ]; then
@@ -177,7 +177,7 @@ if [ ! -f "telegram-cli" ]; then
         chmod 777 make
         logo
         echo -e "\n\033[1;34mPlease wait ...\033[0;00m\n"
-        sudo apt-get -y update &>/dev/null; sudo apt-get upgrade -y --force-yes &>/dev/null; sudo apt-get dist-upgrade -y --force-yes &>/dev/null; sudo apt-get -y install f &>/dev/null
+        apt-get -y update &>/dev/null; apt-get upgrade -y --force-yes &>/dev/null; apt-get dist-upgrade -y --force-yes &>/dev/null; apt-get -y install f &>/dev/null
         installation
         rm -rf README.md
         configure
@@ -203,8 +203,8 @@ if [ ! -f "telegram-cli" ]; then
     echo -e "\n\033[1;32mInstall Complete\033[0;00m\n"
         rm -rf *.deb
     sleep 2
-    sudo service redis-server restart &>/dev/null
-    sudo service redis-server start &>/dev/null
+    service redis-server restart &>/dev/null
+    service redis-server start &>/dev/null
     lua tgGuard.lua
     chmod 777 start
     sleep 1
