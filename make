@@ -158,11 +158,11 @@ update
 fi
 
 
-api() {
+function api() {
         nohup lua Api.lua &>> nohup.out &
 }
 
-start() {
+function start() {
 COUNTER=0
   while [ $COUNTER -lt 55 ]; do
   api
@@ -173,7 +173,7 @@ COUNTER=0
   done
 }
 
-if [[ ! -f "telegram-cli" ]] || [[ ! -f "Config.lua" ]] ; then
+if [ ! -f "telegram-cli" ]; then
         chmod 777 make
         logo
         echo -e "\n\033[1;34mPlease wait ...\033[0;00m\n"
@@ -208,6 +208,10 @@ if [[ ! -f "telegram-cli" ]] || [[ ! -f "Config.lua" ]] ; then
     lua tgGuard.lua
     chmod 777 start
     sleep 1
+    lua tgGuard.lua
+    start
+elif [ ! -f "Config.lua" ]; then
+    lua tgGuard.lua
     start
 else
         start
