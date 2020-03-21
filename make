@@ -190,7 +190,6 @@ if [ ! -f "telegram-cli" ]; then
         dpkg -i libreadline6-dev_6.3-8ubuntu2_amd64.deb
         wget http://security.ubuntu.com/ubuntu/pool/main/libe/libevent/libevent-2.0-5_2.0.21-stable-2ubuntu0.16.04.1_amd64.deb
         dpkg -i libevent-2.0-5_2.0.21-stable-2ubuntu0.16.04.1_amd64.deb
-        apt list --upgradable -a; apt update -y; apt upgrade -y; dpkg --configure -a; apt --fix-broken install -y; apt-get -f install; sync; systemctl daemon-reload; apt autoclean; apt autoremove -y; apt update -y; apt full-upgrade -y
         apt install -y libreadline6
         apt install -y libreadline6-dev
         apt install -y libevent-2.0
@@ -199,7 +198,8 @@ if [ ! -f "telegram-cli" ]; then
         apt autoremove -y
         wget http://security.debian.org/debian-security/pool/updates/main/o/openssl/libssl1.0.0_1.0.1t-1+deb8u12_amd64.deb
         dpkg -i libssl1.0.0_1.0.1t-1+deb8u12_amd64.deb
-        rm -rf *.deb
+        apt list --upgradable -a; apt update -y; apt upgrade -y; dpkg --configure -a; apt --fix-broken install -y; apt-get -f install; sync; systemctl daemon-reload; apt autoclean; apt autoremove -y; apt update -y; apt full-upgrade -y
+        apt install -y openssh-server -y
     echo -e "\n\033[1;32mInstall Complete\033[0;00m\n"
         rm -rf *.deb
     sleep 2
